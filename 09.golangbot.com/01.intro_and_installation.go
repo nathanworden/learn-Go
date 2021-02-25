@@ -9,9 +9,3 @@
 // Go is a compiled language. The source code is compiled to a native binary. This is missing in interpreted languages such as JavaScript used in nodejs.
 
 package main
-
-import "fmt"
-
-func main() {
-	fmt.Println("Hello World")
-}
