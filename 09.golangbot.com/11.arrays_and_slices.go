@@ -108,3 +108,70 @@ func main() {
 
 57, 89, 90, 82, 100, 78, 67, 69, 59
 57, 89, 91, 83, 101, 78, 67, 69, 59
+
+// Length and capacity of a slice
+
+// The length of the slice is the number of elements in the slice. THe capaacity of the slice is the number of elements in the underlying array starting from the index from which the slice is created.
+
+
+
+// creating a slice using make
+
+// func make([]T, len, cap) []T can be used to create a slice by passing the type, length and capacity. The capacity parameter is optional and defaults to the length. The make function creates an array and returns a slice reference to it.
+
+func main() {
+	i := make([]int, 5, 5)
+	fmt.Println(i)
+}
+
+// Apending to a slice
+
+// As we already know, arrays are restricted to fixed length and their length cannot be increased. Slices are dynamic and new elements can be appended to the slice using the `append` function. The definition of the `append` function is func append( s []T, x ... T) []T
+
+// x ...T in the function definition means that the function accepts variable number of arguments for the parameter x. These type of functions are called variadic functions.
+
+// Passing a slice to a function
+// slice can be though of as being represented internally by a structure type. This is ow it looks:
+
+type slice struct {
+	Length int
+	Capacity int
+	ZerothElement *byte
+}
+
+
+func subtactOne(numbers []int) {
+	for i := range numbers {
+		numbers[i] -= 2
+	}
+}
+
+func main() {
+	nos := []int{8, 7, 6}
+	fmt.Println("slice before function call", nos)
+	subtactOne(nos)
+	fumt.Println("slice after function call", nos)
+}
+
+
+
+
+// When arrays are passed to functions as parameters, they are passed by value and the original array is unchanged.
+
+package main
+
+import "fmt"
+
+func changeLocal(num [5]int) {
+	num[0] = 55
+	fmt.Println("inside function ", num)
+
+}
+
+func main() {
+	num := [...]int{5, 6, 7, 8, 8}
+	fmt.Println("before passing to function ", num)
+	changeLocal(num) // num is passed by value
+	fmt.Println("after passing to function ", num)
+}
+
