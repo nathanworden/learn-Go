@@ -184,22 +184,34 @@ import (
 	"fmt"
 )
 
-func compareStrings(str1 string, str2 string) {
-	if str1 == str2 {
-		fmt.Printf("%s and %s are equal\n", str1, str2)
-		return
-	}
-	fmt.Printf("%s and %s are not equal\n", str1, str2)
+// func compareStrings(str1 string, str2 string) {
+// 	if str1 == str2 {
+// 		fmt.Printf("%s and %s are equal\n", str1, str2)
+// 		return
+// 	}
+// 	fmt.Printf("%s and %s are not equal\n", str1, str2)
+// }
+
+// func main() {
+// 	string1 := "Go"
+// 	string2 := "Go"
+// 	compareStrings(string1, string2)
+
+// 	string3 := "hello"
+// 	string4 := "world"
+// 	compareStrings(string3, string4)
+// }
+
+// Strings are immutable in Go. Once a string is created it's not possible to change it
+
+// To work around string immutablility, strings are converted to a slice of runes. Thien that slice is mutated with whatever changes are needed and converted back to a new string.
+
+func mutate(s []rune) string {
+	s[0] = 'a'
+	return string(s)
 }
 
 func main() {
-	string1 := "Go"
-	string2 := "Go"
-	compareStrings(string1, string2)
-
-	string3 := "hello"
-	string4 := "world"
-	compareStrings(string3, string4)
+	h := "hello"
+	fmt.Println(mutate([]rune(h)))
 }
-
-// Strings are immutable in Go. Once a string is created it's not possible to change it
