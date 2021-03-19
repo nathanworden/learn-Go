@@ -1,0 +1,1 @@
+// Go is a concurrent language and not a parallel one. 
